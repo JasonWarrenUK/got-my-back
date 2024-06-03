@@ -1,5 +1,15 @@
 extends layout
 
 block content
-  h1= Got My Back
+  h1= title
   p Welcome to #{title}
+
+  h2 Where & What?
+  form(action='/')
+    p
+      label(for='postcode') Postcode
+      input#postcode(type='text' name='postcode')
+    p
+      label(for='topic') Topic
+      input#topic(type='text' name='topic')
+    input(type='submit' value='submit')

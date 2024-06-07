@@ -19,6 +19,7 @@
     "@babel/cli": "^7.24.7",
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
+    "dotenv": "^16.4.5",
     "nodemon": "^3.1.3"
   }
 }

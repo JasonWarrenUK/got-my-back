@@ -1,57 +1,59 @@
 // h1 Imports
-// h2 Modules
+// h2 Structure
 import createError from "http-errors";
 import express from "express";
+import dotenv from "dotenv";
+
+// h2 Wut?
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import dotenv from "dotenv";
-// TODO import bodyParser from "body-parser";
 
-// h3 Routers
+// h2 Routes
+import routes from "./routes/index.js";
+
+ // xx Get Reckt
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
-// TODO import routes from "./routes";
 
-// h3 __dirname
+// h2 Soon, My Pretty
+// TODO import bodyParser from "body-parser";
+
+// h1 Declarations
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 //h1 Server Setup
+// h2 Structure
 dotenv.config();
 const app = express();
 
-// h2 Parser
-// TODO app.use(bodyParser.json());
-// TODO app.use(bodyParser.urlencoded({ extended: true }));
-
-// h2 Routes
-// TODO app.use(routes);
-
-// h2 Other
+// h2 Wut?
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// h1 Parameters
-// h2 Pug Setup
+// h2 Soon, My Pretty
+// TODO app.use(bodyParser.json());
+// TODO app.use(bodyParser.urlencoded({ extended: true }));
+
+// h1 App Setup
+// h2 Pug
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 // h2 Routes
-// h3 Content Routes
+app.use(routes);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-// h3 Safety Routes
 app.use(function (req, res, next) {
   next(createError(404));
 });
-
 app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

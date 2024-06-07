@@ -14,7 +14,7 @@ import logger from "morgan";
 // h2 Routes
 import routes from "./routes/index.js";
 
- // xx Get Reckt
+// xx Get Reckt
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 
@@ -48,8 +48,6 @@ app.set("view engine", "pug");
 
 // h2 Routes
 app.use(routes);
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

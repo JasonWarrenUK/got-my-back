@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-// TODO import dotenv from "dotenv";
+import dotenv from "dotenv";
 // TODO import bodyParser from "body-parser";
 
 // h3 Routers
@@ -19,11 +19,9 @@ import usersRouter from "./routes/users.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-//h1 Setup
-// h2 Server Setup
+//h1 Server Setup
+dotenv.config();
 const app = express();
-// TODO dotenv.config();
-// TODO const port = process.env.PORT || 3000;
 
 // h2 Parser
 // TODO app.use(bodyParser.json());

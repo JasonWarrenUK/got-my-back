@@ -14,3 +14,4 @@
 # Developer Files
 .env
 *.code-workspace
+node_modules/

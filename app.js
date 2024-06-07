@@ -3,6 +3,7 @@
 import createError from "http-errors";
 import express from "express";
 import dotenv from "dotenv";
+// import debug from "debug";
 
 // h2 Wut?
 import path from "path";

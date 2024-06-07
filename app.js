@@ -41,9 +41,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// h2 Soon, My Pretty
-// TODO app.use(bodyParser.json());
-// TODO app.use(bodyParser.urlencoded({ extended: true }));
 
 // h1 App Setup
 // h2 Pug

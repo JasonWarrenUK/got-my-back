@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "babel index.js -d dist"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -17,9 +16,6 @@
     "pug": "^3.0.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.7",
-    "@babel/core": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.3"
   }

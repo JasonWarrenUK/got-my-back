@@ -7,8 +7,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
-import routes from "./routes/index.js";
-// TODO import bodyParser from "body-parser";
+import routes from "./routes/rIndex.js";
 
 //h1 Setup
 const __filename = fileURLToPath(import.meta.url);

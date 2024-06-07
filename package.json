@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "nodemon ./bin/www.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "build": "babel index.js -d dist"
   },
   "dependencies": {

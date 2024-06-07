@@ -3,6 +3,7 @@
 import createError from "http-errors";
 import express from "express";
 import dotenv from "dotenv";
+// import debug from "debug";
 
 // h2 Wut?
 import path from "path";
@@ -30,6 +31,9 @@ const __dirname = dirname(__filename);
 dotenv.config();
 const app = express();
 
+//port
+const PORT = process.env.PORT || 3000;
+
 // h2 Wut?
 app.use(logger("dev"));
 app.use(express.json());
@@ -37,9 +41,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// h2 Soon, My Pretty
-// TODO app.use(bodyParser.json());
-// TODO app.use(bodyParser.urlencoded({ extended: true }));
 
 // h1 App Setup
 // h2 Pug
@@ -60,5 +61,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-//h1 Exports
-export default app; // ?? Does this need to be here?
+//listern
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

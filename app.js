@@ -30,6 +30,9 @@ const __dirname = dirname(__filename);
 dotenv.config();
 const app = express();
 
+//port
+const PORT = process.env.PORT || 3000;
+
 // h2 Wut?
 app.use(logger("dev"));
 app.use(express.json());
@@ -60,5 +63,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-//h1 Exports
-export default app; // ?? Does this need to be here?
+//listern
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

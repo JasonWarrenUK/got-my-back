@@ -104,6 +104,60 @@ title: Structure
     classDef page stroke:#0ff, stroke-width:4px
 ```
 
+```mermaid
+---
+title: Babel
+---
+    graph TD
+    subgraph inUse["`User Input`"]
+        inUse1["`1 • Input`"]:::isConcept
+    end
+
+    subgraph inSyn["`BabelNet Search`"]
+        subgraph inSynDer["`Derived Synonyms`"]
+            inSynDer1["`1 • Input`"]:::isConcept
+            inSynDer2["`2 • Synonym`"]:::isConcept
+            inSynDer3["`3 • Synonym`"]:::isEntity
+            inSynDer4["`4 • Synonym`"]:::isConcept
+        end
+
+        inFil(("`Filters`"))
+
+        subgraph inSynCur["`Curated Synonyms`"]
+            inSynCur1["`1 • Input`"]:::isConcept
+            inSynCur2["`2 • Synonym`"]:::isConcept
+            inSynCur4["`4 • Synonym`"]:::isConcept
+        end
+    end
+
+    subgraph mid["`Entries`"]
+        mid1
+    end
+
+    subgraph out["`Word List`"]
+        out1
+    end
+
+    inUse1 --> inSynDer1
+        inUse1 -.-> inSynDer2
+        inUse1 -.-> inSynDer3
+        inUse1 -.-> inSynDer4
+    inSynDer1 --> inSynCur1
+        inSynDer2 --> inFil
+        inSynDer3 --> inFil
+        inSynDer4 --> inFil
+    inFil --> inSynCur2
+        inFil --> inSynCur4
+
+    inSyn --> mid
+
+    mid --> out
+
+    classDef default stroke-width:3px
+    classDef isEntity stroke:#f00
+    classDef isConcept stroke:#0ff
+```
+
 ## Archive
 
 ```mermaid

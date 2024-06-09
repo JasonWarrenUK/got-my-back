@@ -110,52 +110,109 @@ title: Babel
 ---
     graph TD
     subgraph inUse["`User Input`"]
-        inUse1["`1 • Input`"]:::isConcept
+        inUse1["`Input`"]:::isYes
     end
+
+    inUse1 --> inDic1
+
+    subgraph inDic["`Dictionary API`"]
+        inDic1["`Input`"]:::isFin
+    end
+
+    inDic1 --> inSynCur1
+        inDic1 -.-> inSynDer2
+        inDic1 -.-> inSynDer3
+        inDic1 -.-> inSynDer4
+        inDic1 -.-> inSynDer5
+        inDic1 -.-> inSynDer6
 
     subgraph inSyn["`BabelNet Search`"]
         subgraph inSynDer["`Derived Synonyms`"]
-            inSynDer1["`1 • Input`"]:::isConcept
-            inSynDer2["`2 • Synonym`"]:::isConcept
-            inSynDer3["`3 • Synonym`"]:::isEntity
-            inSynDer4["`4 • Synonym`"]:::isConcept
+            inSynDer2["`Synonym`"]:::isYes
+            inSynDer3["`Synonym`"]:::isYes
+            inSynDer4["`Synonym`"]:::isYes
+            inSynDer5["`Synonym`"]:::isYes
+            inSynDer6["`Synonym`"]:::isYes
         end
 
-        inFil(("`Filters`"))
+        inSynDer2 --> inFilCon2
+            inSynDer3 --> inFilCon3
+            inSynDer4 --> inFilCon4
+            inSynDer5 --> inFilCon5
+            inSynDer6 --> inFilCon6
+
+        subgraph inFil["`Filters`"]
+            subgraph inFilCon["`Accept Concepts`"]
+                inFilCon2["`Synonym`"]:::isYes
+                inFilCon3["`Synonym`"]:::isNo
+                inFilCon4["`Synonym`"]:::isYes
+                inFilCon5["`Synonym`"]:::isYes
+                inFilCon6["`Synonym`"]:::isYes
+            end
+
+            inFilCon2 --> inFilVer2
+                inFilCon4 --> inFilVer4
+                inFilCon5 --> inFilVer5
+                inFilCon6 --> inFilVer6
+
+            subgraph inFilVer["`Accept Nouns & Adjectives`"]
+                inFilVer2["`Synonym`"]:::isYes
+                inFilVer4["`Synonym`"]:::isYes
+                inFilVer5["`Synonym`"]:::isNo
+                inFilVer6["`Synonym`"]:::isYes
+            end
+
+            inFilVer2 --> inFilDom2
+                inFilVer4 --> inFilDom4
+                inFilVer6 --> inFilDom6
+
+            subgraph inFilDom["`Cull Domains`"]
+                inFilDom2["`Synonym`"]:::isYes
+                inFilDom4["`Synonym`"]:::isYes
+                inFilDom6["`Synonym`"]:::isNo
+            end
+        end
+
+        inFilDom2 --> inSynCur2
+            inFilDom4 --> inSynCur4
 
         subgraph inSynCur["`Curated Synonyms`"]
-            inSynCur1["`1 • Input`"]:::isConcept
-            inSynCur2["`2 • Synonym`"]:::isConcept
-            inSynCur4["`4 • Synonym`"]:::isConcept
+            inSynCur1["`Input`"]:::isFin
+            inSynCur2["`Synonym`"]:::isYes
+            inSynCur4["`Synonym`"]:::isYes
         end
     end
 
+    inSynCur1 --> midHub1 & out1_1
+        inSynCur2 --> midHub2 & out2_1
+        inSynCur4 --> midHub4 & out4_1
+
     subgraph mid["`Entries`"]
-        mid1
+        midHub1(("`Entry`"))
+        midHub2(("`Entry`"))
+        midHub4(("`Entry`"))
     end
-
-    subgraph out["`Word List`"]
-        out1
-    end
-
-    inUse1 --> inSynDer1
-        inUse1 -.-> inSynDer2
-        inUse1 -.-> inSynDer3
-        inUse1 -.-> inSynDer4
-    inSynDer1 --> inSynCur1
-        inSynDer2 --> inFil
-        inSynDer3 --> inFil
-        inSynDer4 --> inFil
-    inFil --> inSynCur2
-        inFil --> inSynCur4
-
-    inSyn --> mid
 
     mid --> out
 
+    subgraph out["`Word List`"]
+        subgraph out1
+            out1_1["`Input`"]:::isFin
+        end
+        
+        subgraph out2
+            out2_1["`Synonym`"]:::isYes
+        end
+        
+        subgraph out4
+            out4_1["`Synonym`"]:::isYes
+        end
+    end
+
     classDef default stroke-width:3px
-    classDef isEntity stroke:#f00
-    classDef isConcept stroke:#0ff
+    classDef isFin stroke:#00f
+    classDef isYes stroke:#0ff
+    classDef isNo stroke:#f00
 ```
 
 ## Archive

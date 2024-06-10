@@ -3,19 +3,27 @@ extends layout
 block content
   header
     h1= title
-
-  hr
-
   main
     h2 Candidate Profile
-    p Candidate for #{postcode}
-    p Candidate's record on #{topic}
+    
+    img(src="images/turnip320.jpg", alt="A Turnip")
+
+    h3 Details
+    ul
+      li Constituency: #{postcode}
+      li Party: The Turnip Brigade
     hr
+
+    h3 Candidate's Record
+    ul
+      li Result 1
+      li Result 2
+      li Result 3
+    hr
+    
     p
         a(href="/list") Back to the list
-  
-  hr
-
+    hr
   footer
     p
         a(href="/") New Search

@@ -31,7 +31,7 @@ export function displayList(req, res) {
 
 export function displayEntry(req, res) {
     res.render('entry', {
-        title: 'Got My Back',
+        title: 'Bill Roger Turnipface',
         postcode: search.postcode,
         topic: search.topic
     });

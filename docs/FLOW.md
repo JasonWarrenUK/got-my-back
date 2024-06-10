@@ -49,7 +49,8 @@ title: Structure
 
     %% User Inputs --> Expanded Inputs
     apiDic[("`Dictionary API`")]:::toFind
-    apiBbl[("`BabelNet`")]:::toUse
+    apiBbl[("`BabelNet
+        See Next Diagram`")]:::toUse
     apiCom[("`Electoral Commission`")]:::toUse
 
     %% Expanded Inputs --> Search Terms
@@ -178,34 +179,43 @@ title: Babel
 
         subgraph inSynCur["`Curated Synonyms`"]
             inSynCur1["`Input`"]:::isFin
-            inSynCur2["`Synonym`"]:::isYes
-            inSynCur4["`Synonym`"]:::isYes
+            inSynCur2["`Synonym`"]:::isFin
+            inSynCur4["`Synonym`"]:::isFin
         end
     end
 
-    inSynCur1 --> midHub1 & out1_1
-        inSynCur2 --> midHub2 & out2_1
-        inSynCur4 --> midHub4 & out4_1
+    inSynCur1 --> out1_1
+        inSynCur2 --> out2_1
+        inSynCur4 --> out4_1
+
+    inSynCur1 -.-> midHub1
+        inSynCur2 -.-> midHub2
+        inSynCur4 -.-> midHub4
 
     subgraph mid["`Entries`"]
-        midHub1(("`Entry`"))
-        midHub2(("`Entry`"))
-        midHub4(("`Entry`"))
+        midInfo{{"`***TO DO***
+            Choosing related
+            terms from entries`"}}
+        midHub1(["`Related`"])
+        midHub2(["`Related`"])
+        midHub4(["`Related`"])
     end
 
-    mid --> out
+    midHub1 -.-> out1
+        midHub2 -.-> out2
+        midHub4 -.-> out4
 
     subgraph out["`Word List`"]
         subgraph out1
             out1_1["`Input`"]:::isFin
         end
-        
+
         subgraph out2
-            out2_1["`Synonym`"]:::isYes
+            out2_1["`Synonym`"]:::isFin
         end
-        
+
         subgraph out4
-            out4_1["`Synonym`"]:::isYes
+            out4_1["`Synonym`"]:::isFin
         end
     end
 

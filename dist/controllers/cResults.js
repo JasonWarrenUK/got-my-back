@@ -1,4 +1,3 @@
-import express from 'express';
 import { search } from '../data/params.js';
 export function setTerms(req, res) {
     search.postcode = '';

@@ -1,7 +1,7 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { search } from '../data/params.js';
 
-export function setTerms(req, res) {
+export function setTerms(req: Request, res: Response) {
     search.postcode = '';
     search.topic = '';
     
@@ -10,7 +10,7 @@ export function setTerms(req, res) {
     });
 }
 
-export function huntList(req, res) {
+export function huntList(req: Request, res: Response) {
     search.postcode = req.body.postcode;
     search.topic = req.body.topic;
 
@@ -21,7 +21,7 @@ export function huntList(req, res) {
     });
 }
 
-export function displayList(req, res) {
+export function displayList(req: Request, res: Response) {
     res.render('list', {
         title: 'Got My Back',
         postcode: search.postcode,
@@ -29,7 +29,7 @@ export function displayList(req, res) {
     });
 }
 
-export function displayEntry(req, res) {
+export function displayEntry(req: Request, res: Response) {
     res.render('entry', {
         title: 'Bill Roger Turnipface',
         postcode: search.postcode,

@@ -1,11 +1,11 @@
 {
   "name": "got-my-back",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node ./dist/index.js",
-    "dev": "ts-node-dev — respawn — pretty — transpile-only index.ts",
+    "start": "node ./dist/app.js",
+    "dev": "nodemon --watch src --ext ts,json --exec \"node --loader ts-node/esm --experimental-specifier-resolution=node ./src/app.ts\"",
     "tsc": "tsc",
     "postinstall": "npm run tsc"
   },
@@ -28,6 +28,7 @@
     "nodemon": "^3.1.3",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.4.5"
   }
 }

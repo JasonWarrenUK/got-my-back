@@ -16,3 +16,5 @@
 *.code-workspace
 node_modules
 
+# TS Stuff
+dist
